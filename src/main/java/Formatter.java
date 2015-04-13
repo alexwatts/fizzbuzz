@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Formatter.java.
@@ -25,12 +26,18 @@ public class Formatter {
 
     public String getFormattedNumberSequence() {
 
+        buildFormattedSequenceAndIncrementCounts();
+
+        return getFormattedSequenceOutput();
+
+    }
+
+    private void buildFormattedSequenceAndIncrementCounts() {
         for (Integer numberInSequence: numberSequence.getNumberSequence()) {
             addApplicableFormatRulesToMap(numberInSequence);
         }
 
-        return getFormattedSequenceOutput();
-
+        incrementRuleCountsForFiredRules();
     }
 
     private void addKeysToFormattedSequenceMap() {
@@ -43,6 +50,14 @@ public class Formatter {
         for (FormatRule rule :formatRules) {
             if (rule.shouldRuleBeAppliedToSequenceValue(i)) {
                 formattedSequence.put(i, rule);
+            }
+        }
+    }
+
+    private void incrementRuleCountsForFiredRules() {
+        for (Map.Entry<Integer, FormatRule> entry : formattedSequence.entrySet()) {
+            if (entry.getValue() != null) {
+                entry.getValue().incrementCount();
             }
         }
     }

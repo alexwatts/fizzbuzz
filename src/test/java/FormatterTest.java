@@ -68,8 +68,13 @@ public class FormatterTest {
         //GIVEN
         Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
         DivisibleByFormatRule divisibleByThreeRule = new DivisibleByFormatRule(3, Format.FIZZ);
-
+        DivisibleByFormatRule divisibleByFiveRule = new DivisibleByFormatRule(5, Format.BUZZ);
+        DivisibleByFormatRule divisibleByFifteenRule = new DivisibleByFormatRule(15, Format.FIZZBUZZ);
+        ContainsStringFormatRule containsThreeRule = new ContainsStringFormatRule("3", Format.LUCKY);
         numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByThreeRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFiveRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFifteenRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(containsThreeRule);
 
         //WHEN
         numberSequenceFormatter.getFormattedNumberSequence();
@@ -84,8 +89,14 @@ public class FormatterTest {
 
         //GIVEN
         Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        DivisibleByFormatRule divisibleByThreeRule = new DivisibleByFormatRule(3, Format.FIZZ);
         DivisibleByFormatRule divisibleByFiveRule = new DivisibleByFormatRule(5, Format.BUZZ);
+        DivisibleByFormatRule divisibleByFifteenRule = new DivisibleByFormatRule(15, Format.FIZZBUZZ);
+        ContainsStringFormatRule containsThreeRule = new ContainsStringFormatRule("3", Format.LUCKY);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByThreeRule);
         numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFiveRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFifteenRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(containsThreeRule);
 
         //WHEN
         numberSequenceFormatter.getFormattedNumberSequence();
@@ -100,8 +111,14 @@ public class FormatterTest {
 
         //GIVEN
         Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        DivisibleByFormatRule divisibleByThreeRule = new DivisibleByFormatRule(3, Format.FIZZ);
+        DivisibleByFormatRule divisibleByFiveRule = new DivisibleByFormatRule(5, Format.BUZZ);
         DivisibleByFormatRule divisibleByFifteenRule = new DivisibleByFormatRule(15, Format.FIZZBUZZ);
+        ContainsStringFormatRule containsThreeRule = new ContainsStringFormatRule("3", Format.LUCKY);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByThreeRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFiveRule);
         numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFifteenRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(containsThreeRule);
 
         //WHEN
         numberSequenceFormatter.getFormattedNumberSequence();
@@ -116,14 +133,20 @@ public class FormatterTest {
 
         //GIVEN
         Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        DivisibleByFormatRule divisibleByThreeRule = new DivisibleByFormatRule(3, Format.FIZZ);
+        DivisibleByFormatRule divisibleByFiveRule = new DivisibleByFormatRule(5, Format.BUZZ);
+        DivisibleByFormatRule divisibleByFifteenRule = new DivisibleByFormatRule(15, Format.FIZZBUZZ);
         ContainsStringFormatRule containsThreeRule = new ContainsStringFormatRule("3", Format.LUCKY);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByThreeRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFiveRule);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFifteenRule);
         numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(containsThreeRule);
 
         //WHEN
         numberSequenceFormatter.getFormattedNumberSequence();
 
         //THEN
-        Assert.assertEquals(1, containsThreeRule.getCount());
+        Assert.assertEquals(2, containsThreeRule.getCount());
 
     }
 
