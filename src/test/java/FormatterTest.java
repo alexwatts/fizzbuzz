@@ -62,5 +62,69 @@ public class FormatterTest {
                 formattedNumberSequence);
     }
 
+    @Test
+    public void testThatSequenceWithAllFormatRulesCorrectlyCountsFuzz() {
+
+        //GIVEN
+        Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        DivisibleByFormatRule divisibleByThreeRule = new DivisibleByFormatRule(3, Format.FIZZ);
+
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByThreeRule);
+
+        //WHEN
+        numberSequenceFormatter.getFormattedNumberSequence();
+
+        //THEN
+        Assert.assertEquals(4, divisibleByThreeRule.getCount());
+
+    }
+
+    @Test
+    public void testThatSequenceWithAllFormatRulesCorrectlyCountsBuzz() {
+
+        //GIVEN
+        Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        DivisibleByFormatRule divisibleByFiveRule = new DivisibleByFormatRule(5, Format.BUZZ);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFiveRule);
+
+        //WHEN
+        numberSequenceFormatter.getFormattedNumberSequence();
+
+        //THEN
+        Assert.assertEquals(3, divisibleByFiveRule.getCount());
+
+    }
+
+    @Test
+    public void testThatSequenceWithAllFormatRulesCorrectlyCountsFizzBuzz() {
+
+        //GIVEN
+        Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        DivisibleByFormatRule divisibleByFifteenRule = new DivisibleByFormatRule(15, Format.FIZZBUZZ);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(divisibleByFifteenRule);
+
+        //WHEN
+        numberSequenceFormatter.getFormattedNumberSequence();
+
+        //THEN
+        Assert.assertEquals(1, divisibleByFifteenRule.getCount());
+
+    }
+
+    @Test
+    public void testThatSequenceWithAllFormatRulesCorrectlyCountsLucky() {
+
+        //GIVEN
+        Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        ContainsStringFormatRule containsThreeRule = new ContainsStringFormatRule("3", Format.LUCKY);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(containsThreeRule);
+
+        //WHEN
+        numberSequenceFormatter.getFormattedNumberSequence();
+
+        //THEN
+        Assert.assertEquals(1, containsThreeRule.getCount());
+
+    }
 
 }
