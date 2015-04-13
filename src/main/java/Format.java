@@ -3,6 +3,6 @@
  */
 public enum Format {
 
-    FIZZ, BUZZ, FIZZBUZZ
+    FIZZ, BUZZ, FIZZBUZZ, LUCKY
 
 }
