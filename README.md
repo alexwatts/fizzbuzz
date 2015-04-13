@@ -17,5 +17,5 @@ To run the program I used these commands
 
 chmod 0777 target/Fizzbuzz/bin/Fizzbuzz
 <br />
-./target/Rover/bin/Fizzbuzz
+./target/Fizzbuzz/bin/Fizzbuzz
 
