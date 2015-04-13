@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 /**
  * ContainsStringFormatRule.java
  */
@@ -11,7 +13,7 @@ public class ContainsStringFormatRule extends FormatRule {
     }
 
     protected boolean shouldRuleBeAppliedToSequenceValue(Integer numberInSequence) {
-        return false;
+        return numberInSequence.toString().contains(string);
     }
 
 }

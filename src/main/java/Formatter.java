@@ -19,7 +19,7 @@ public class Formatter {
         addKeysToFormattedSequenceMap();
     }
 
-    public void registerFormatRule(FormatRule formatRule) {
+    public void registerFormatRuleInOrderOfPrecedence(FormatRule formatRule) {
         formatRules.add(formatRule);
     }
 

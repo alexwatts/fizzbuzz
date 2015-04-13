@@ -30,9 +30,9 @@ public class FormatterTest {
 
         //GIVEN
         Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
-        numberSequenceFormatter.registerFormatRule(new DivisibleByFormatRule(3, Format.FIZZ));
-        numberSequenceFormatter.registerFormatRule(new DivisibleByFormatRule(5, Format.BUZZ));
-        numberSequenceFormatter.registerFormatRule(new DivisibleByFormatRule(15, Format.FIZZBUZZ));
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(new DivisibleByFormatRule(3, Format.FIZZ));
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(new DivisibleByFormatRule(5, Format.BUZZ));
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(new DivisibleByFormatRule(15, Format.FIZZBUZZ));
 
         //WHEN
         String formattedNumberSequence = numberSequenceFormatter.getFormattedNumberSequence();
@@ -40,6 +40,25 @@ public class FormatterTest {
         //THEN
         Assert.assertEquals(
                 "1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz, 16, 17, fizz, 19, buzz",
+                formattedNumberSequence);
+    }
+
+    @Test
+    public void testThatSequenceWithAllFormatRulesFormatCorrectlyFormats() {
+
+        //GIVEN
+        Formatter numberSequenceFormatter = new Formatter(oneToTwentySequence);
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(new DivisibleByFormatRule(3, Format.FIZZ));
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(new DivisibleByFormatRule(5, Format.BUZZ));
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(new DivisibleByFormatRule(15, Format.FIZZBUZZ));
+        numberSequenceFormatter.registerFormatRuleInOrderOfPrecedence(new ContainsStringFormatRule("3", Format.LUCKY));
+
+        //WHEN
+        String formattedNumberSequence = numberSequenceFormatter.getFormattedNumberSequence();
+
+        //THEN
+        Assert.assertEquals(
+                "1, 2, lucky, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, lucky, 14, fizzbuzz, 16, 17, fizz, 19, buzz",
                 formattedNumberSequence);
     }
 
