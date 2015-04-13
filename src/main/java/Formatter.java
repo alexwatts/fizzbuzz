@@ -25,11 +25,9 @@ public class Formatter {
     }
 
     public String getFormattedNumberSequence() {
-
         buildFormattedSequenceAndIncrementCounts();
 
         return getFormattedSequenceOutput();
-
     }
 
     private void buildFormattedSequenceAndIncrementCounts() {
@@ -63,7 +61,6 @@ public class Formatter {
     }
 
     private String getFormattedSequenceOutput() {
-
         StringBuilder formattedOutput = new StringBuilder();
 
         for (Integer numberInSequence: formattedSequence.keySet()) {
@@ -75,7 +72,6 @@ public class Formatter {
             }
 
             formattedOutput.append(", ");
-
         }
 
         //remove the final " ,"
@@ -83,6 +79,5 @@ public class Formatter {
 
         return formattedOutput.toString();
     }
-
 
 }
