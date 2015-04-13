@@ -30,4 +30,17 @@ public class ContainsStringFormatRuleTest {
         Assert.assertEquals(false, shouldFormatBeApplied);
     }
 
+    @Test
+    public void testThatContainsFormatRuleCounterIsIncremented() {
+        //GIVEN
+        ContainsStringFormatRule formatRule = new ContainsStringFormatRule("3", Format.LUCKY);
+
+        //THEN
+        formatRule.incrementCount();
+
+        //WHEN
+        Assert.assertEquals(1, formatRule.getCount());
+    }
+
+
 }

@@ -80,4 +80,16 @@ public class DivisibleByFormatRuleTest {
         Assert.assertEquals(false, shouldFormatBeApplied);
     }
 
+    @Test
+    public void testThatDivisibleFormatRuleCounterIsIncremented() {
+        //GIVEN
+        DivisibleByFormatRule formatRule = new DivisibleByFormatRule(3, Format.LUCKY);
+
+        //THEN
+        formatRule.incrementCount();
+
+        //WHEN
+        Assert.assertEquals(1, formatRule.getCount());
+    }
+
 }

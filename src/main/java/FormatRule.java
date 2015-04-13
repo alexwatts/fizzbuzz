@@ -17,7 +17,7 @@ public abstract class FormatRule {
         countFired++;
     }
 
-    protected Integer getCount() {
+    protected int getCount() {
         return countFired;
     }
 
