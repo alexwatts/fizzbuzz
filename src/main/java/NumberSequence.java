@@ -5,7 +5,7 @@ import java.util.List;
  */
 public class NumberSequence {
 
-    public NumberSequence(List<Integer> number) {
+    public NumberSequence(List<Integer> numberSequence) {
 
     }
 

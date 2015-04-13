@@ -1,6 +1,5 @@
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,16 +8,18 @@ import java.util.List;
  */
 public class NumberSequenceTest {
 
+    private List<Integer> oneToTwenty = Arrays.asList(1, 3, 5, 7, 9);
+
     @Test
-    public void testThatNumbersAddededToSequenceAreRetrievedAndInCorrectSequence() {
+    public void testThatNumbersAddedToSequenceAreRetrievedAndInCorrectSequence() {
         //GIVEN
-        NumberSequence numberSequence = new NumberSequence(Arrays.asList(1, 3, 5, 7, 9));
+        NumberSequence numberSequence = new NumberSequence(oneToTwenty);
 
         //WHEN
         List<Integer> numberSequenceToTest = numberSequence.getNumberSequence();
 
         //THEN
-        Assert.assertEquals(Arrays.asList(1, 3, 5, 7, 9), numberSequenceToTest);
+        Assert.assertEquals(oneToTwenty, numberSequenceToTest);
     }
 
 }
