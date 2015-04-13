@@ -11,7 +11,7 @@ public class DivisibleByFormatRule extends FormatRule {
     }
 
     protected boolean shouldRuleBeAppliedToSequenceValue(Integer numberInSequence) {
-        return false;
+        return numberInSequence % divisor == 0;
     }
 
 }

@@ -5,12 +5,14 @@ import java.util.List;
  */
 public class NumberSequence {
 
-    public NumberSequence(List<Integer> numberSequence) {
+    private List numberSequence;
 
+    public NumberSequence(List<Integer> numberSequence) {
+        this.numberSequence = numberSequence;
     }
 
     public List<Integer> getNumberSequence() {
-        return null;
+        return numberSequence;
     }
 
 }
