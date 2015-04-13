@@ -8,7 +8,8 @@ import java.util.List;
  */
 public class NumberSequenceTest {
 
-    private List<Integer> oneToTwenty = Arrays.asList(1, 3, 5, 7, 9);
+    private List<Integer> oneToTwenty =
+            Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
 
     @Test
     public void testThatNumbersAddedToSequenceAreRetrievedAndInCorrectSequence() {
